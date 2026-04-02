@@ -34,4 +34,13 @@ public class KafkaTopicConfig {
                 .replicas(1)
                 .build();
     }
+
+    @Bean
+    public NewTopic seatReservation(){
+        return TopicBuilder
+                .name("seat-reservation-expired")
+                .partitions(1)
+                .replicas(1)
+                .build();
+    }
 }

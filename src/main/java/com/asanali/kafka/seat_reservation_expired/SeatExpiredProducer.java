@@ -1,4 +1,4 @@
-package com.asanali.kafka.producer;
+package com.asanali.kafka.seat_reservation_expired;
 
 import com.asanali.kafka.dto.SeatReservationExpiredDto;
 import lombok.RequiredArgsConstructor;

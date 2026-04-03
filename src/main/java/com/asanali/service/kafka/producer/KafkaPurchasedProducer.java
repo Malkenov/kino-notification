@@ -1,7 +1,7 @@
-package com.asanali.kafka.producer;
+package com.asanali.service.kafka.producer;
 
 
-import com.asanali.kafka.dto.KafkaPurchasedDto;
+import com.asanali.service.kafka.dto.KafkaPurchasedDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
-package com.asanali.kafka.producer;
+package com.asanali.service.kafka.consumer;
 
 
-import com.asanali.kafka.dto.MovieReminderDto;
+import com.asanali.service.kafka.dto.MovieReminderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.mail.SimpleMailMessage;

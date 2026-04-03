@@ -1,12 +1,10 @@
 package com.asanali.controller;
 
-<<<<<<< Updated upstream
-import com.asanali.kafka.dto.KafkaPurchasedDto;
-import com.asanali.kafka.producer.KafkaPurchasedProducer;
-=======
-import com.asanali.Service.KafkaCancelledProducer;
-import com.asanali.Service.KafkaPurchasedProducer;
->>>>>>> Stashed changes
+import com.asanali.service.kafka.dto.KafkaCancelledDto;
+import com.asanali.service.kafka.dto.KafkaPurchasedDto;
+import com.asanali.service.kafka.producer.KafkaCancelledProducer;
+import com.asanali.service.kafka.producer.KafkaPurchasedProducer;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,10 +14,17 @@ import org.springframework.web.bind.annotation.*;
 public class KafkaController {
 
     private final KafkaPurchasedProducer kafkaPurchasedProducer;
+    private final KafkaCancelledProducer kafkaCancelledProducer;
 
     @PostMapping("/ticket-purchased")
     public String sendTicket(@RequestBody KafkaPurchasedDto dto){
         kafkaPurchasedProducer.send(dto);
         return "Сообщение отправлно!";
+    }
+
+    @PostMapping("/ticket-cancelled")
+    public String sendCancelled(@RequestBody KafkaCancelledDto dto){
+        kafkaCancelledProducer.send(dto);
+        return "Возврат в обработке!";
     }
 }

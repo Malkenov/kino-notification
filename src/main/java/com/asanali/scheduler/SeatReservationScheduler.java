@@ -3,8 +3,8 @@ package com.asanali.scheduler;
 
 import com.asanali.entity.Seat;
 import com.asanali.enums.SeatStatus;
-import com.asanali.kafka.dto.SeatReservationExpiredDto;
-import com.asanali.kafka.producer.SeatExpiredProducer;
+import com.asanali.service.kafka.dto.SeatReservationExpiredDto;
+import com.asanali.service.kafka.producer.SeatExpiredProducer;
 
 import com.asanali.repository.SeatRepository;
 import lombok.RequiredArgsConstructor;

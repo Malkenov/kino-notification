@@ -1,7 +1,7 @@
-package com.asanali.kafka.producer;
+package com.asanali.service.kafka.producer;
 
 
-import com.asanali.kafka.dto.MovieReminderDto;
+import com.asanali.service.kafka.dto.MovieReminderDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.scheduling.annotation.Scheduled;

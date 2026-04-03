@@ -1,7 +1,7 @@
-package com.asanali.kafka.producer;
+package com.asanali.service.kafka.consumer;
 
 
-import com.asanali.kafka.dto.KafkaPurchasedDto;
+import com.asanali.service.kafka.dto.KafkaPurchasedDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.mail.SimpleMailMessage;

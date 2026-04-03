@@ -7,11 +7,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class KafkaReminderProducer {
+public class SeatExpiredProducer {
 
     private final KafkaTemplate<String, SeatReservationExpiredDto> kafkaTemplate;
 
-    public void reminder(SeatReservationExpiredDto dto){
+    public void send(SeatReservationExpiredDto dto){
         kafkaTemplate.send("seat-reservation-expired",dto);
         System.out.println("Бронь истекла: " + dto);
     }

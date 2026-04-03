@@ -11,9 +11,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class KafkaReminderConsumer {
+public class SeatExpiredConsumer {
 
-    private final JavaMailSender mailSender;
     private final SeatRepository seatRepository;
 
     @KafkaListener(topics = "seat-reservation-expired", groupId = "seat-group")

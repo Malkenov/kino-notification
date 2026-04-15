@@ -1,6 +1,7 @@
 package com.asanali.service.kafka.consumer;
 
 
+import com.asanali.config.KafkaTopicsConfig;
 import com.asanali.dto.KafkaCancelledDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,7 @@ public class KafkaCancelledConsumer {
 
     private final JavaMailSender javaMailSender;
 
-    @KafkaListener(topics = "ticket-cancelled", groupId = "notification-group")
+    @KafkaListener(topics = KafkaTopicsConfig.TICKET_CANCELLED, groupId = "notification-group")
     public void listen(KafkaCancelledDto dto) {
         log.info("Получено сообщение: {}", dto);
 

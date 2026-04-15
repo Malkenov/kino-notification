@@ -1,6 +1,7 @@
 package com.asanali.service.kafka.consumer;
 
 
+import com.asanali.config.KafkaTopicsConfig;
 import com.asanali.dto.MovieReminderDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,26 +17,21 @@ public class KafkaMovieReminderConsumer {
 
     private final JavaMailSender mailSender;
 
-    @KafkaListener(topics = "movie-reminder", groupId = "notification")
+    @KafkaListener(topics = KafkaTopicsConfig.MOVIE_REMINDER, groupId = "notification")
     public void listen(MovieReminderDto dto) {
         log.info("Сообщение {}", dto);
 
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(dto.getUserEmail());
+        message.setSubject("Напоминание " + dto.getMovieName());
+        message.setText(
+                "Привет " + dto.getUserName() + "\n" +
+                        "сегодня " + dto.getShowTime() + "\n" +
+                        "в кинотеатре " + dto.getCinemaName() + "\n" +
+                        "будет показ фильма " + dto.getMovieName()
+        );
 
-        try {
-            SimpleMailMessage message = new SimpleMailMessage();
-            message.setTo(dto.getUserEmail());
-            message.setSubject("Напоминание " + dto.getMovieName());
-            message.setText(
-                    "Привет " + dto.getUserName() + "\n" +
-                            "сегодня " + dto.getShowTime() + "\n" +
-                            "в кинотеатре " + dto.getCinemaName() + "\n" +
-                            "будет показ фильма " + dto.getMovieName()
-            );
-
-            mailSender.send(message);
-            log.info("Сообщение отправлено по адресу {}", dto.getUserEmail());
-        } catch (Exception e) {
-            log.error("Не удалось отправить сообщение на {}: {}", dto.getUserEmail(), e.getMessage());
-        }
+        mailSender.send(message);
+        log.info("Сообщение отправлено по адресу {}", dto.getUserEmail());
     }
 }
